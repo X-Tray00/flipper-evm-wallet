@@ -15,7 +15,11 @@ PY
 .venv/bin/ufbt
 python3 - <<'PY'
 from pathlib import Path
-import hashlib,json
+import hashlib,json,os,subprocess
+home=Path(os.environ.get('UFBT_HOME',str(Path.home()/'.ufbt')))
 p=Path('dist/flipper_evm_wallet.fap')
-Path('dist/firmware-build.json').write_text(json.dumps({'sdk':'mntm-012','api':'87.1','sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'release_status':'development'},indent=2)+'\n')
+# Debuglink contains the debug ELF CRC, which varies with absolute host paths.
+# Runtime sections and API imports remain unchanged. Keep the separate debug ELF.
+subprocess.run([str(home/'toolchain/current/bin/arm-none-eabi-objcopy'),'--remove-section=.gnu_debuglink',str(p)],check=True)
+Path('dist/firmware-build.json').write_text(json.dumps({'sdk':'mntm-012','api':'87.1','sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'release_status':'development','normalization':'removed host-specific GNU debuglink CRC'},indent=2)+'\n')
 PY

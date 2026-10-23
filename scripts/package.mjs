@@ -56,6 +56,22 @@ for (const file of ['README.md', 'LICENSE', 'SECURITY.md'])
 await mkdir(path.join(release, 'docs'), { recursive: true });
 for (const file of (await readdir('docs')).filter((n) => n.endsWith('.md') || n.endsWith('.json')))
   await copyFile(path.join('docs', file), path.join(release, 'docs', file));
+await mkdir(path.join(release, 'artifacts'), { recursive: true });
+for (const file of (await readdir('artifacts')).filter(
+  (n) => n.endsWith('.json') || n.endsWith('.png'),
+))
+  await copyFile(path.join('artifacts', file), path.join(release, 'artifacts', file));
+const bundle = path.join(release, 'flipper-evm-wallet-development.zip');
+execFileSync('python3', [
+  '-c',
+  `import pathlib,zipfile
+root=pathlib.Path('dist/packages')
+with zipfile.ZipFile(${JSON.stringify(bundle)},'w',zipfile.ZIP_DEFLATED) as z:
+ for p in sorted(root.rglob('*')):
+  if p.is_file() and p.name not in ['flipper-evm-wallet-development.zip','SHA256SUMS']:
+   info=zipfile.ZipInfo(str(p.relative_to(root)),(2026,10,23,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o644<<16;z.writestr(info,p.read_bytes())
+`,
+]);
 let sums = '';
 for (const name of (await readdir(release))
   .filter((n) => n.endsWith('.zip') || n.endsWith('.fap'))

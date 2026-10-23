@@ -37,6 +37,7 @@ jobs:
             artifacts/browser-results.json
             artifacts/wallet-ui-bg.png
             build/native/Testing/Temporary/LastTest.log
+            dist/extension
   firmware:
     runs-on: ubuntu-24.04
     steps:
