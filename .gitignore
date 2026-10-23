@@ -1,0 +1,13 @@
+.venv/
+.ufbt/
+node_modules/
+build/
+dist/
+.DS_Store
+*.pyc
+__pycache__/
+.env*
+!*.example
+artifacts/private/
+lib/crypto/*_*.c
+.vscode/

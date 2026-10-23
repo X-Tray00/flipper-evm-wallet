@@ -1,0 +1,14 @@
+{
+ "manifest_version":3,"name":"Flipper EVM Wallet — Testnet","version":"0.1.0",
+ "description":"Experimental device signing for Sepolia, Base Sepolia and Arbitrum Sepolia. No real funds.",
+ "minimum_chrome_version":"120",
+ "permissions":["storage"],
+ "host_permissions":["https://ethereum-sepolia-rpc.publicnode.com/*","https://sepolia.base.org/*","https://sepolia-rollup.arbitrum.io/*"],
+ "background":{"service_worker":"background.js","type":"module"},
+ "action":{"default_title":"Open testnet wallet"},
+ "content_scripts":[
+  {"matches":["https://*/*","http://localhost/*","http://127.0.0.1/*"],"js":["provider.js"],"run_at":"document_start","world":"MAIN"},
+  {"matches":["https://*/*","http://localhost/*","http://127.0.0.1/*"],"js":["content.js"],"run_at":"document_start","world":"ISOLATED"}
+ ],
+ "content_security_policy":{"extension_pages":"script-src 'self'; object-src 'none'; base-uri 'none'"}
+}

@@ -1,0 +1,17 @@
+{
+  "fap_sha256": "5e0b36117da8b302bc098d26b5971b3c12989744eb1665d752ec9f601238b063",
+  "device_crypto_selftest_flags": 15,
+  "crypto_selftest_ms": 84587,
+  "minimum_observed_heap": 51296,
+  "locked_status_cycles": 100,
+  "transport": "physical Flipper USB vendor HID",
+  "protocol": 1,
+  "free_heap": 51296,
+  "locked_signing_rejected": true,
+  "session_established": true,
+  "date": "2026-10-23",
+  "firmware": "Momentum mntm-012",
+  "api": "87.1",
+  "uses_public_test_vectors_only": true,
+  "physical_sign_cancel_cycles_verified": false
+}

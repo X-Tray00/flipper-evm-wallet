@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="bg">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><title>Flipper Wallet — local demo</title
+  ><style>
+    body {
+      font: 16px system-ui;
+      background: #f1f4f0;
+      color: #173e32;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 24px;
+    }
+    h1 {
+      letter-spacing: -1px;
+    }
+    section {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      margin: 20px 0;
+    }
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+      padding: 12px;
+      margin: 6px 0;
+      border: 1px solid #cad9c9;
+      border-radius: 8px;
+    }
+    button {
+      background: #173e32;
+      color: white;
+      cursor: pointer;
+    }
+    input,
+    select,
+    textarea {
+      box-sizing: border-box;
+      width: 100%;
+    }
+    pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      background: #e4ede1;
+      padding: 16px;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+    }
+    small {
+      color: #667c6d;
+    }
+  </style>
+  <h1>Flipper EVM Wallet</h1>
+  <p>Локална демонстрация · само тестови активи</p>
+  <small
+    >Няма сървър за ключове. Всеки подпис изисква проверка и физическо потвърждение върху
+    Flipper.</small
+  >
+  <section>
+    <h2>1. Свързване</h2>
+    <select id="wallets"></select
+    ><button id="connect">Поискай публичен адрес</button><button id="revoke">Отнеми достъпа</button>
+    <pre id="account">Няма избран адрес</pre>
+    <select id="chain">
+      <option value="11155111">Sepolia</option>
+      <option value="84532">Base Sepolia</option>
+      <option value="421614">Arbitrum Sepolia</option></select
+    ><button id="switch">Смени тестовата мрежа</button>
+  </section>
+  <section>
+    <h2>2. Преглед и подписване</h2>
+    <label>Получател<input id="to" placeholder="0x…" /></label
+    ><label>Тестов ETH<input id="value" value="0.000001" /></label
+    ><button id="send">Изпрати тестов ETH</button><button id="siwe">Вход със SIWE</button
+    ><button id="rejectTest">Провери отказ на eth_sign</button>
+    <p>
+      <small
+        >SIWE използва истинския origin на тази страница. Часовникът на устройството трябва да е
+        правилен в UTC.</small
+      >
+    </p>
+  </section>
+  <section>
+    <h2>3. Тестови договори</h2>
+    <label>Договор<input id="contract" placeholder="Проверен адрес от deployments.json" /></label
+    ><label
+      >Действие<select id="operation">
+        <option>ERC20 transfer</option>
+        <option>ERC20 approve</option>
+        <option>ERC20 revoke</option>
+        <option>ERC721</option>
+        <option>ERC1155</option>
+      </select></label
+    ><label>Сурови единици<input id="units" value="1" /></label
+    ><label>NFT ID<input id="token" value="0" /></label
+    ><button id="asset">Подпиши извикването</button>
+    <button id="permit">Подпиши и провери Permit</button>
+    <p>
+      <small
+        >Permit остава отказан, докато устройството няма проверен регистър на внедрените
+        договори.</small
+      >
+    </p>
+  </section>
+  <section>
+    <h2>Резултат</h2>
+    <pre id="result">Готово за тест</pre>
+  </section>
+  <section>
+    <h2>Обратна връзка за пилота</h2>
+    <p>
+      Формата създава локален файл. Нищо не се изпраща автоматично. Не включвай PIN, думи, ключове
+      или записи от картата.
+    </p>
+    <label>Конфигурация<input id="configuration" placeholder="Momentum / Chrome / OS" /></label
+    ><label
+      >Кои стъпки успяха и къде възникна проблем?<textarea id="feedback" rows="4"></textarea></label
+    ><label
+      >Интерес към платен пилот<select id="interest">
+        <option value="none">Не заявявам интерес</option>
+        <option value="support">Техническа поддръжка</option>
+        <option value="integration">Разработка на интеграция</option>
+      </select></label
+    ><button id="download">Изтегли отговорите</button>
+  </section>
+  <script type="module" src="/main.ts"></script>
+</html>

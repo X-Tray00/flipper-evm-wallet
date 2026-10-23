@@ -1,0 +1,40 @@
+{
+  "name": "flipper-evm-wallet",
+  "version": "0.1.0-dev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-extension.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:vectors": "node tests/differential.mjs",
+    "contracts:build": "node scripts/compile-contracts.mjs",
+    "demo": "vite demo --host 127.0.0.1",
+    "demo:build": "vite build demo --outDir ../dist/demo"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "viem": "2.57.10"
+  },
+  "devDependencies": {
+    "@openzeppelin/contracts": "5.6.1",
+    "@playwright/test": "1.64.1",
+    "@types/chrome": "0.3.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@types/w3c-web-hid": "1.0.7",
+    "prettier": "3.9.10",
+    "solc": "0.8.38",
+    "typescript": "7.0.2",
+    "vite": "8.3.5",
+    "vitest": "5.0.5"
+  },
+  "engines": {
+    "node": ">=22.22.2 <23"
+  },
+  "packageManager": "npm@12.2.1",
+  "overrides": {
+    "tmp": "0.2.7"
+  }
+}

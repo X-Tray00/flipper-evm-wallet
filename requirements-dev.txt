@@ -1,0 +1,4 @@
+ufbt==0.2.6
+pyserial==3.5
+hidapi==0.15.0
+clang-format==21.1.8

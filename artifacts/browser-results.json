@@ -1,0 +1,15 @@
+{
+  "browser": "156.0.8078.4",
+  "profile": "isolated temporary profile",
+  "checks": [
+    "extension UI bg/en",
+    "no address before permission",
+    "EIP6963",
+    "UI impersonation denied",
+    "permission rejection",
+    "navigation cancels",
+    "second-origin isolation",
+    "other wallet coexistence"
+  ],
+  "hardwareHID": false
+}

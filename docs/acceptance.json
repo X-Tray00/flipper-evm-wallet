@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "release_status": "development",
+  "gates": {
+    "reproducible_build": {
+      "passed": false,
+      "evidence": []
+    },
+    "native_crypto_and_parsers": {
+      "passed": false,
+      "evidence": []
+    },
+    "browser_isolation": {
+      "passed": true,
+      "evidence": [
+        "artifacts/browser-results.json",
+        "tests/browser.mjs"
+      ],
+      "scope": "Isolated Chromium; physical WebHID and Chrome/Brave are separate open gates"
+    },
+    "physical_setup_and_recovery_five_addresses": {
+      "passed": false,
+      "evidence": []
+    },
+    "physical_approval_and_remote_input_rejection": {
+      "passed": false,
+      "evidence": []
+    },
+    "usb_unplug_timeout_competing_requests_hardware": {
+      "passed": false,
+      "evidence": []
+    },
+    "sd_corruption_and_power_cut_hardware": {
+      "passed": false,
+      "evidence": []
+    },
+    "hundred_physical_sign_cancel_cycles": {
+      "passed": false,
+      "evidence": []
+    },
+    "worst_case_free_heap_16k": {
+      "passed": false,
+      "evidence": []
+    },
+    "chrome_webhid_end_to_end": {
+      "passed": false,
+      "evidence": []
+    },
+    "all_supported_operations_three_testnets": {
+      "passed": false,
+      "evidence": []
+    },
+    "permit_deployments_and_signatures": {
+      "passed": false,
+      "evidence": []
+    },
+    "siwe_real_site_verification": {
+      "passed": false,
+      "evidence": []
+    },
+    "total_fee_display_policy": {
+      "passed": false,
+      "evidence": []
+    },
+    "no_known_critical_release_defects": {
+      "passed": false,
+      "evidence": []
+    },
+    "downloaded_release_reinstallation": {
+      "passed": false,
+      "evidence": []
+    }
+  }
+}
