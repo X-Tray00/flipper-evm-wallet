@@ -4,17 +4,20 @@ body {
   margin: 0;
 }
 button.secondary {
-  background: transparent;
-  border-color: #796044;
-  color: var(--orange-light);
+  background: #2a2119;
+  border-color: #795a3b;
+  color: #ffc079;
+  box-shadow: inset 0 1px 0 #ffffff10, 0 2px 6px #0004;
 }
 button.secondary:hover:not(:disabled) {
-  background: #352719;
+  background: #39291b;
+  border-color: #b37a3e;
 }
 button.ghost {
-  background: transparent;
+  background: #271b1a;
   border-color: #795047;
   color: #ffb7a4;
+  box-shadow: inset 0 1px 0 #ffffff0a, 0 2px 6px #0004;
 }
 button.ghost:hover:not(:disabled) {
   background: #3c211b;
@@ -23,6 +26,7 @@ button.ghost:hover:not(:disabled) {
 button.secondary:disabled {
   border-color: #4b4033;
   color: #af9c84;
+  box-shadow: none;
 }
 label {
   display: block;
@@ -113,15 +117,18 @@ nav button {
   font-size: 19px;
   font-weight: 400;
   padding: 12px 10px;
+  box-shadow: none;
 }
 nav button:hover:not(:disabled) {
   background: #2b231b;
-  border-color: #4d3820;
+  border-color: #624629;
+  box-shadow: none;
 }
 nav button.active {
-  background: #302214;
-  border-color: #6b461d;
-  color: var(--orange-light);
+  background: linear-gradient(90deg, #382718, #292018);
+  border-color: #825527;
+  color: #ffc073;
+  box-shadow: inset 0 1px 0 #ffba5326;
 }
 nav button.active::before {
   content: '';
@@ -311,26 +318,29 @@ header > div {
   margin-bottom: 0;
 }
 .balance-card button {
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #ffba68;
+  background: linear-gradient(180deg, #33200d, var(--ink));
+  border-color: #4a2a0d;
+  color: #ffc780;
+  box-shadow: inset 0 1px 0 #ffb45a38, 0 3px 8px #7f37003d;
 }
 .balance-card button:hover:not(:disabled) {
-  background: #38220d;
-  border-color: var(--ink);
+  background: linear-gradient(180deg, #4c2b0e, #291809);
+  border-color: #603609;
 }
 .balance-card button.secondary {
-  background: transparent;
-  border-color: #603609;
+  background: #ffbf642e;
+  border-color: #8d4d0b;
   color: var(--ink);
+  box-shadow: inset 0 1px 0 #fff2cb48;
 }
 .balance-card button.secondary:hover:not(:disabled) {
-  background: #ffad50;
+  background: #ffc97670;
 }
 .balance-card button:disabled {
   border-color: #985711;
   background: #1810080d;
   color: #613809;
+  box-shadow: none;
 }
 .balance-card :focus-visible {
   outline-color: var(--ink);

@@ -13,15 +13,11 @@
     "sdk_sha256": "c90530c3e0aa7bc4356b8521df20d23d7b4a5435ab58a2530ffb696200408cc2"
   },
   "ufbt": "0.2.6",
-  "ibm_plex_mono": {
+  "jura": {
     "repository": "https://github.com/google/fonts",
-    "commit": "01d5d9f05246fb7090a8403b81257535cb1a088b",
-    "path": "ofl/ibmplexmono",
-    "files": {
-      "IBMPlexMono-Regular.ttf": "6a3412f058c7d8dfd9170c41e85ade48e5156ecb89356110ca57a0a27734af46",
-      "IBMPlexMono-Medium.ttf": "a9b4c49bb299e05b5f6c481e7fb5e78943d2793249a0c8874ab574a2d1ea6755",
-      "IBMPlexMono-SemiBold.ttf": "d3c38e55c78f5b0f28009fddba4834ec503278936a5986032424c9bd2d23aa46"
-    },
+    "commit": "6e4b84c976cadb3c49a40fd9a1c203e4f7fcf2da",
+    "path": "ofl/jura/Jura[wght].ttf",
+    "sha256": "188b415d44810d68b4d6b4a8c281f864184c2b8edc5e88e6357c89f7b44075bf",
     "license": "assets/fonts/OFL.txt"
   }
 }
