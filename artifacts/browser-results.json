@@ -2,11 +2,13 @@
   "browser": "156.0.8078.4",
   "profile": "isolated temporary profile",
   "checks": [
-    "extension UI bg/en",
+    "English default even with Bulgarian browser locale",
+    "en/bg/de/es/fr selection persists across page reload",
+    "unsupported locale rejected without changing preference",
     "no address before permission",
     "EIP6963",
     "UI impersonation denied",
-    "permission rejection",
+    "localized permission prompt preserves origin and rejection",
     "navigation cancels",
     "second-origin isolation",
     "other wallet coexistence"

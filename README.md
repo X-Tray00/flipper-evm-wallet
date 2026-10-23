@@ -4,7 +4,7 @@ An open source **testnet-only development wallet** for stock Flipper Zero runnin
 
 **Development build. Not an accepted public beta. Not audited. Never import a real wallet or use real assets.** The physical approval, recovery and real-network acceptance gates are still open ([hands-on checklist](docs/HARDWARE_ACCEPTANCE.md)). See [current evidence and remaining work](docs/STATUS.md).
 
-![Bulgarian wallet interface](artifacts/wallet-ui-bg.png)
+![English wallet interface with language selection](artifacts/wallet-ui-en.png)
 
 ## Implemented
 
@@ -14,7 +14,7 @@ An open source **testnet-only development wallet** for stock Flipper Zero runnin
 - Vendor USB HID protocol with session/request binding, bounded framing, cancellation and immutable review data. No raw-hash signing command.
 - Firmware policy for Sepolia, Base Sepolia and Arbitrum Sepolia. ETH transfers, ERC20 transfers/bounded allowances, ERC721 and ERC1155 single transfers, restricted SIWE.
 - EIP2612 parser and hashing with a versioned contract allowlist. **The production allowlist is empty until deployments are confirmed. Permit signing is therefore currently refused.** Host-only fixture coverage is separate.
-- EIP1193/EIP6963 provider, site permission prompts/revocation, local history, watched token/NFT contracts, Bulgarian and English UI, fixed testnet RPC providers with chain-ID checks.
+- EIP1193/EIP6963 provider, site permission prompts/revocation, local history, watched token/NFT contracts, UI in English by default, with English, Bulgarian, German, Spanish and French options, fixed testnet RPC providers with chain-ID checks.
 - Flipper-inspired black/orange interface with a locally bundled retro pixel font, including Bulgarian Cyrillic. Addresses and form values use a readable monospace font.
 - Native vectors, parser mutation tests, storage failure models, real isolated-browser tests, contract fixtures, CI and development packaging.
 

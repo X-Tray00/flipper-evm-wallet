@@ -30,6 +30,8 @@ import {
   type ChainId,
 } from './policy';
 import { rpc } from './rpc';
+import { DEFAULT_LOCALE, isLocale, savedLocale, type Locale } from '../../shared/locales';
+import type { RequestTitle } from '../../shared/messages';
 
 type Grant = { address: Address; account: number };
 type Asset = {
@@ -50,7 +52,8 @@ type History = {
 type State = {
   chain: ChainId;
   account: number;
-  locale: 'bg' | 'en';
+  locale: Locale;
+  localeVersion: number;
   grants: Record<string, Grant>;
   addresses: Record<string, Address>;
   assets: Asset[];
@@ -59,7 +62,8 @@ type State = {
 const defaults: State = {
   chain: 11155111,
   account: 0,
-  locale: 'bg',
+  locale: DEFAULT_LOCALE,
+  localeVersion: 1,
   grants: {},
   addresses: {},
   assets: [],
@@ -76,6 +80,9 @@ const ready = (async () => {
     state.chain = chainId(state.chain);
     state.account = accountIndex(state.account);
   }
+  state.locale = savedLocale(saved.wallet);
+  state.localeVersion = 1;
+  await save();
 })();
 async function save() {
   await chrome.storage.local.set({ wallet: state });
@@ -132,7 +139,7 @@ async function revoke(origin: string) {
 type Pending = {
   id: string;
   origin: string;
-  title: string;
+  title: RequestTitle;
   details: string;
   phase: 'review' | 'device';
   site?: ReturnType<typeof site>;
@@ -152,7 +159,7 @@ async function rejectPending(message = 'Request rejected') {
 }
 async function ask(
   origin: string,
-  title: string,
+  title: RequestTitle,
   details: string,
   run: () => Promise<unknown>,
   requestSite?: ReturnType<typeof site>,
@@ -412,7 +419,7 @@ async function siteRequest(m: any, sender: chrome.runtime.MessageSender) {
     const index = state.account;
     return ask(
       origin,
-      'Connect site',
+      'connectSite',
       `Share public account ${index + 1} with this site. Confirm the address on Flipper.`,
       async () => {
         const p = pending;
@@ -446,7 +453,7 @@ async function siteRequest(m: any, sender: chrome.runtime.MessageSender) {
     const selected = chainId(object(params[0]).chainId);
     return ask(
       origin,
-      'Change test network',
+      'changeNetwork',
       CHAINS[selected].name,
       async () => {
         state.chain = selected;
@@ -461,7 +468,7 @@ async function siteRequest(m: any, sender: chrome.runtime.MessageSender) {
     if (params.length !== 1) fail(-32602, 'Expected one transaction');
     return ask(
       origin,
-      'Review transaction',
+      'reviewTransaction',
       JSON.stringify(params[0], null, 2),
       () => sendTransaction(origin, params[0], g, chain),
       s,
@@ -473,7 +480,7 @@ async function siteRequest(m: any, sender: chrome.runtime.MessageSender) {
     const message = hex(params[0], 1536);
     return ask(
       origin,
-      'Sign in with Ethereum',
+      'signIn',
       new TextDecoder('utf-8', { fatal: true }).decode(hexToBytes(message)),
       async () => {
         const p = pending;
@@ -498,7 +505,7 @@ async function siteRequest(m: any, sender: chrome.runtime.MessageSender) {
       fail(-32602, 'Expected connected account and typed data');
     return ask(
       origin,
-      'Permit token spending',
+      'permitSpending',
       typeof params[1] === 'string' ? params[1] : JSON.stringify(params[1], null, 2),
       () => permit(origin, params[1], g, chain),
       s,
@@ -551,7 +558,8 @@ async function ui(m: any, sender: chrome.runtime.MessageSender) {
       await rejectPending();
       return true;
     case 'locale':
-      state.locale = m.value === 'en' ? 'en' : 'bg';
+      if (!isLocale(m.value)) fail(-32602, 'Unsupported language');
+      state.locale = m.value;
       await save();
       return true;
     case 'account':
@@ -587,7 +595,7 @@ async function ui(m: any, sender: chrome.runtime.MessageSender) {
       const chain = state.chain,
         g = { address: addr, account: state.account };
       const tx = { ...object(m.tx), from: addr };
-      return ask('Wallet', 'Send test transaction', JSON.stringify(tx, null, 2), () =>
+      return ask('Wallet', 'sendTestTransaction', JSON.stringify(tx, null, 2), () =>
         sendTransaction('Wallet', tx, g, chain),
       );
     }

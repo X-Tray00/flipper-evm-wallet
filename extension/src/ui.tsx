@@ -4,116 +4,8 @@ import { formatEther, parseEther, toHex, encodeFunctionData, type Address } from
 import { CHAINS } from './policy';
 import { FILTER } from './hid';
 import './wallet.css';
-const words = {
-  bg: {
-    operation: 'Действие',
-    type: 'Вид',
-    privacyTitle: 'Поверителност и връзка с мрежата',
-    title: 'Твоят ключ. Твоето решение.',
-    sub: 'Подписване с Flipper Zero',
-    test: 'Само тестови мрежи',
-    development: 'Версия за разработка · непроверена бета',
-    connect: 'Свържи Flipper',
-    connected: 'Устройството е свързано',
-    offline: 'Няма връзка с Flipper',
-    home: 'Портфейл',
-    send: 'Изпращане',
-    assets: 'Токени и NFT',
-    activity: 'История',
-    sites: 'Свързани сайтове',
-    settings: 'Настройки',
-    verify: 'Покажи и провери адреса',
-    refresh: 'Обнови баланс',
-    receive: 'Получаване',
-    account: 'Адрес',
-    network: 'Мрежа',
-    copy: 'Копирай',
-    noAddress: 'Потвърди адреса върху Flipper, за да го използваш.',
-    explain:
-      'Отвори EVM Wallet на Flipper, отключи го и свържи устройството. PIN и резервни думи се въвеждат само на него.',
-    recipient: 'Получател / получател на разрешението',
-    amount: 'Количество',
-    contract: 'Договор',
-    token: 'Идентификатор на NFT',
-    review: 'Преглед върху Flipper',
-    reject: 'Откажи',
-    approve: 'Продължи към устройството',
-    wait: 'Прегледай всички страници и задръж физически OK за 2 секунди.',
-    origin: 'Сайт, който отправя заявката',
-    revoke: 'Премахни достъпа',
-    empty: 'Все още няма записи.',
-    watch: 'Добави за наблюдение',
-    remove: 'Премахни',
-    balance: 'Провери',
-    raw: 'Сурови единици — името и десетичните позиции не са потвърдени.',
-    security:
-      'Експериментален портфейл. Използвай нови резервни думи и тестови активи. Flipper не е защитен сейф; променен фърмуер или физически достъп могат да разкрият ключовете.',
-    privacy:
-      'Без телеметрия. Заявките за баланс и изпращане отиват директно към избрания публичен RPC доставчик.',
-    disconnect: 'Прекъсни USB сесията',
-    receipt: 'Провери потвърждението',
-    backup: 'Резервни думи и PIN',
-    backupText:
-      'Създаване, възстановяване и смяна на PIN се правят от менюто на Flipper. Никога не въвеждай резервните думи в браузъра.',
-    needApproval: 'Заявка за преглед',
-    clear:
-      'Всички разрешени сайтове получават само избрания публичен адрес. Смяната на адрес отнема разрешенията.',
-  },
-  en: {
-    operation: 'Operation',
-    type: 'Type',
-    privacyTitle: 'Privacy and network connection',
-    title: 'Your key. Your decision.',
-    sub: 'Sign with Flipper Zero',
-    test: 'Test networks only',
-    development: 'Development build · beta not verified',
-    connect: 'Connect Flipper',
-    connected: 'Device connected',
-    offline: 'Flipper is disconnected',
-    home: 'Wallet',
-    send: 'Send',
-    assets: 'Tokens & NFTs',
-    activity: 'History',
-    sites: 'Connected sites',
-    settings: 'Settings',
-    verify: 'Show and verify address',
-    refresh: 'Refresh balance',
-    receive: 'Receive',
-    account: 'Account',
-    network: 'Network',
-    copy: 'Copy',
-    noAddress: 'Confirm your address on Flipper before using it.',
-    explain:
-      'Open EVM Wallet on Flipper, unlock it, then connect the device. Enter PIN and recovery words only on the device.',
-    recipient: 'Recipient / spender',
-    amount: 'Amount',
-    contract: 'Contract',
-    token: 'NFT token ID',
-    review: 'Review on Flipper',
-    reject: 'Reject',
-    approve: 'Continue on device',
-    wait: 'Review every page, then hold the physical OK button for two seconds.',
-    origin: 'Requesting site',
-    revoke: 'Revoke access',
-    empty: 'No entries yet.',
-    watch: 'Add to watch list',
-    remove: 'Remove',
-    balance: 'Check',
-    raw: 'Raw units — token names and decimals are unverified.',
-    security:
-      'Experimental wallet. Use a fresh recovery phrase and test assets. Flipper is not a secure vault; modified firmware or physical access can expose keys.',
-    privacy:
-      'No telemetry. Balance and broadcast requests go directly to the selected public RPC provider.',
-    disconnect: 'Disconnect USB session',
-    receipt: 'Check confirmation',
-    backup: 'Recovery words and PIN',
-    backupText:
-      'Create, restore and change PIN using the Flipper menu. Never enter recovery words in your browser.',
-    needApproval: 'Request for review',
-    clear:
-      'Approved sites receive only the selected public address. Changing accounts revokes site permissions.',
-  },
-};
+import { DEFAULT_LOCALE, getLocale, languages } from '../../shared/locales';
+import { translations, type RequestTitle } from '../../shared/messages';
 async function call(action: string, args: object = {}) {
   if (!globalThis.chrome?.runtime?.id)
     throw new Error('Open this page from the installed extension');
@@ -126,7 +18,7 @@ function App() {
     state: {
       chain: 11155111,
       account: 0,
-      locale: 'bg',
+      locale: DEFAULT_LOCALE,
       addresses: {},
       grants: {},
       assets: [],
@@ -149,7 +41,8 @@ function App() {
     [watchAddress, setWatchAddress] = useState(''),
     [watchId, setWatchId] = useState('');
   const st = snapshot.state,
-    t = words[st.locale as 'bg' | 'en'] || words.bg,
+    locale = getLocale(st.locale),
+    t = translations[locale],
     addr = st.addresses[st.account],
     chain = CHAINS[st.chain as keyof typeof CHAINS];
   async function refresh() {
@@ -164,6 +57,9 @@ function App() {
     const timer = setInterval(() => void refresh(), 1500);
     return () => clearInterval(timer);
   }, []);
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
   useEffect(() => {
     setBalance(null);
   }, [st.chain, st.account]);
@@ -259,14 +155,21 @@ function App() {
             <h1>{t.title}</h1>
             <p className="muted">{t.sub}</p>
           </div>
-          <button
-            className="language"
-            onClick={() =>
-              void act(() => call('locale', { value: st.locale === 'bg' ? 'en' : 'bg' }))
-            }
-          >
-            {st.locale === 'bg' ? 'EN' : 'БГ'}
-          </button>
+          <label className="language-picker">
+            <span>{t.language}</span>
+            <select
+              id="wallet-language"
+              value={locale}
+              disabled={busy}
+              onChange={(e) => void act(() => call('locale', { value: e.target.value }))}
+            >
+              {languages.map(({ code, name }) => (
+                <option key={code} value={code} lang={code}>
+                  {name}
+                </option>
+              ))}
+            </select>
+          </label>
         </header>
         <section className="connection">
           <div>
@@ -328,10 +231,14 @@ function App() {
         {snapshot.pending && (
           <section className="approval">
             <p className="eyebrow">{t.needApproval}</p>
-            <h2>{snapshot.pending.title}</h2>
+            <h2>{t[snapshot.pending.title as RequestTitle]}</h2>
             <label>{t.origin}</label>
             <strong className="origin">{snapshot.pending.origin}</strong>
-            <pre>{snapshot.pending.details}</pre>
+            <pre>
+              {snapshot.pending.title === 'connectSite'
+                ? t.shareAccount.replace('{account}', String(st.account + 1))
+                : snapshot.pending.details}
+            </pre>
             <p>{t.wait}</p>
             <div className="actions">
               <button
@@ -411,7 +318,15 @@ function App() {
                     'ERC721',
                     'ERC1155',
                   ].map((o) => (
-                    <option key={o}>{o}</option>
+                    <option key={o} value={o}>
+                      {o === 'ERC20 transfer'
+                        ? t.transfer
+                        : o === 'ERC20 approve'
+                          ? t.allowance
+                          : o === 'ERC20 revoke'
+                            ? t.cancelAllowance
+                            : o}
+                    </option>
                   ))}
                 </select>
               </label>
@@ -420,7 +335,7 @@ function App() {
               {['ERC721', 'ERC1155'].includes(operation) && field(t.token, token, setToken, '0')}
               {!['ERC721', 'ERC20 revoke'].includes(operation) &&
                 field(
-                  t.amount + (operation === 'ETH' ? ' (ETH)' : ' (raw)'),
+                  t.amount + (operation === 'ETH' ? ' (ETH)' : ` (${t.rawUnits})`),
                   amount,
                   setAmount,
                   '0',
@@ -496,7 +411,8 @@ function App() {
             {st.history.map((h: any) => (
               <article className="row" key={h.hash}>
                 <strong>
-                  {CHAINS[h.chain as keyof typeof CHAINS].name} · {new Date(h.at).toLocaleString()}
+                  {CHAINS[h.chain as keyof typeof CHAINS].name} ·{' '}
+                  {new Date(h.at).toLocaleString(locale)}
                 </strong>
                 <a
                   className="address"
@@ -513,7 +429,7 @@ function App() {
                     void act(async () => {
                       const r = await call('receipt', { hash: h.hash });
                       setMessage(
-                        r ? JSON.stringify({ status: r.status, block: r.blockNumber }) : 'Pending',
+                        r ? JSON.stringify({ status: r.status, block: r.blockNumber }) : t.pending,
                       );
                     })
                   }

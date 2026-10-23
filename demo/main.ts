@@ -1,4 +1,6 @@
 import './demo.css';
+import { DEFAULT_LOCALE, getLocale } from '../shared/locales';
+import { translations, type MessageKey } from '../shared/messages';
 import {
   parseEther,
   toHex,
@@ -8,6 +10,41 @@ import {
 } from 'viem';
 import { createSiweMessage } from 'viem/siwe';
 const el = (id: string) => document.getElementById(id) as HTMLInputElement;
+let locale = DEFAULT_LOCALE;
+try {
+  locale = getLocale(localStorage.getItem('few-demo-language'));
+} catch {
+  /* Storage may be disabled. */
+}
+let t = translations[locale];
+function renderLanguage() {
+  t = translations[locale];
+  document.documentElement.lang = locale;
+  el('demo-language').value = locale;
+  for (const node of document.querySelectorAll<HTMLElement>('[data-i18n]')) {
+    node.textContent = t[node.dataset.i18n as MessageKey];
+  }
+  for (const [data, attribute] of [
+    ['i18nPlaceholder', 'placeholder'],
+    ['i18nAria', 'aria-label'],
+  ] as const) {
+    for (const node of document.querySelectorAll<HTMLElement>(
+      `[data-${data === 'i18nPlaceholder' ? 'i18n-placeholder' : 'i18n-aria'}]`,
+    )) {
+      node.setAttribute(attribute, t[node.dataset[data] as MessageKey]);
+    }
+  }
+}
+renderLanguage();
+el('demo-language').onchange = () => {
+  locale = getLocale(el('demo-language').value);
+  try {
+    localStorage.setItem('few-demo-language', locale);
+  } catch {
+    /* Keep this session usable without storage. */
+  }
+  renderLanguage();
+};
 const wallets: any[] = [];
 let provider: any,
   account = `0x` as `0x${string}`;
@@ -23,7 +60,8 @@ window.dispatchEvent(new Event('eip6963:requestProvider'));
 const run = (id: string, action: () => Promise<unknown>) =>
   (el(id).onclick = async () => {
     try {
-      el('result').textContent = 'Изчакай прегледа и потвърди на Flipper…';
+      delete el('result').dataset.i18n;
+      el('result').textContent = t.demoWait;
       const r = await action();
       el('result').textContent = JSON.stringify(
         r,
@@ -36,8 +74,9 @@ const run = (id: string, action: () => Promise<unknown>) =>
   });
 run('connect', async () => {
   provider = wallets[Number(el('wallets').value)]?.provider;
-  if (!provider) throw Error('Инсталирай разширението и презареди страницата.');
+  if (!provider) throw Error(t.installExtension);
   [account] = await provider.request({ method: 'eth_requestAccounts' });
+  delete el('account').dataset.i18n;
   el('account').textContent = account;
   return account;
 });
@@ -74,14 +113,13 @@ run('siwe', async () => {
     params: [toHex(message), account],
   });
   const recovered = await recoverMessageAddress({ message, signature });
-  if (recovered.toLowerCase() !== account.toLowerCase())
-    throw Error('Signature verification failed');
+  if (recovered.toLowerCase() !== account.toLowerCase()) throw Error(t.signatureFailed);
   return { verified: true, account: recovered, scope: 'Local demo verification only' };
 });
 run('rejectTest', async () => {
   try {
     await provider.request({ method: 'eth_sign', params: [account, '0x' + '00'.repeat(32)] });
-    throw Error('UNEXPECTED: raw signing was allowed');
+    throw Error(t.unexpectedSigning);
   } catch (e: any) {
     if (e.code !== 4200) throw e;
     return { rejected: true, code: e.code };
@@ -181,7 +219,7 @@ run('permit', async () => {
     types: { Permit: typed.types.Permit },
     signature,
   });
-  if (recovered.toLowerCase() !== account.toLowerCase()) throw Error('Permit signature mismatch');
+  if (recovered.toLowerCase() !== account.toLowerCase()) throw Error(t.permitMismatch);
   return {
     verified: true,
     account: recovered,

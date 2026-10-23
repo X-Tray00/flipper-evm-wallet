@@ -12,6 +12,17 @@ const server = createServer((_req, res) => {
 await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 const port = server.address().port;
 let ctx;
+async function screenshot(page, path) {
+  const viewport = page.viewportSize();
+  const height = await page.evaluate(() => document.documentElement.scrollHeight);
+  // An explicit viewport avoids repeated tiles in Chromium full-page captures.
+  await page.setViewportSize({ ...viewport, height });
+  await page.evaluate(
+    () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+  );
+  await page.screenshot({ path });
+  await page.setViewportSize(viewport);
+}
 try {
   const extension = resolve('dist/extension');
   ctx = await chromium.launchPersistentContext(profile, {
@@ -19,6 +30,7 @@ try {
     headless: true,
     args: [`--disable-extensions-except=${extension}`, `--load-extension=${extension}`],
     viewport: { width: 1200, height: 900 },
+    locale: 'bg-BG',
   });
   let worker = ctx.serviceWorkers()[0];
   if (!worker) worker = await ctx.waitForEvent('serviceworker');
@@ -27,15 +39,40 @@ try {
   const ui = await ctx.newPage();
   ui.on('pageerror', (e) => errors.push(e.message));
   await ui.goto(`chrome-extension://${id}/index.html`);
-  await ui.getByRole('heading', { name: 'Твоят ключ. Твоето решение.' }).waitFor();
+  await ui.getByRole('heading', { name: 'Your key. Your decision.' }).waitFor();
   const uiState = await ui.evaluate(() =>
     chrome.runtime.sendMessage({ kind: 'ui', action: 'state' }),
   );
   assert.equal(uiState.result.connected, false);
   assert.equal(uiState.result.state.chain, 11155111);
+  assert.equal(uiState.result.state.locale, 'en');
   await ui.evaluate(() => document.fonts.ready);
-  await ui.screenshot({ path: 'artifacts/wallet-ui-bg.png', fullPage: true });
-  await ui.getByRole('button', { name: 'EN', exact: true }).click();
+  await screenshot(ui, 'artifacts/wallet-ui-en.png');
+  const titles = {
+    bg: 'Твоят ключ. Твоето решение.',
+    de: 'Dein Schlüssel. Deine Entscheidung.',
+    es: 'Tu clave. Tu decisión.',
+    fr: 'Ta clé. Ta décision.',
+    en: 'Your key. Your decision.',
+  };
+  for (const [locale, title] of Object.entries(titles)) {
+    await ui.locator('#wallet-language').selectOption(locale);
+    await ui.getByRole('heading', { name: title, exact: true }).waitFor();
+    await ui.waitForFunction((code) => document.documentElement.lang === code, locale);
+    await ui.reload();
+    await ui.getByRole('heading', { name: title, exact: true }).waitFor();
+    assert.equal(await ui.locator('#wallet-language').inputValue(), locale);
+  }
+  const invalidLocale = await ui.evaluate(() =>
+    chrome.runtime.sendMessage({ kind: 'ui', action: 'locale', value: 'unsupported' }),
+  );
+  assert.equal(invalidLocale.error.code, -32602);
+  const persisted = await ui.evaluate(() => chrome.storage.local.get('wallet'));
+  assert.equal(persisted.wallet.locale, 'en');
+  await ui.setViewportSize({ width: 390, height: 900 });
+  await ui.evaluate(() => document.fonts.ready);
+  await screenshot(ui, 'artifacts/wallet-ui-mobile-en.png');
+  await ui.setViewportSize({ width: 1200, height: 900 });
   await ui.getByRole('heading', { name: 'Your key. Your decision.' }).waitFor();
   await ui.getByRole('button', { name: 'Send', exact: false }).first().click();
   await ui.getByRole('button', { name: 'Review on Flipper' }).waitFor();
@@ -97,6 +134,8 @@ try {
   );
   assert.ok(denial.error);
   assert.equal(denial.result, undefined);
+  await ui.locator('#wallet-language').selectOption('fr');
+  await ui.getByRole('heading', { name: 'Ta clé. Ta décision.' }).waitFor();
   // No HID mock is used. User rejects the real extension's origin permission UI.
   const request = site.evaluate(async () => {
     try {
@@ -106,14 +145,17 @@ try {
     }
   });
   let approval = await ctx.waitForEvent('page');
-  await approval.getByRole('button', { name: 'Reject', exact: true }).waitFor();
-  await approval.getByRole('button', { name: 'Reject', exact: true }).click();
+  await approval.getByRole('heading', { name: 'Connecter un site', exact: true }).waitFor();
+  assert.equal(await approval.locator('.origin').textContent(), `http://127.0.0.1:${port}`);
+  await approval.getByRole('button', { name: 'Refuser', exact: true }).click();
   assert.deepEqual(await request, { error: 4001 });
   assert.deepEqual(
     await site.evaluate(() => window.ethereum.request({ method: 'eth_accounts' })),
     [],
   );
   await approval.close();
+  await ui.locator('#wallet-language').selectOption('en');
+  await ui.getByRole('heading', { name: 'Your key. Your decision.' }).waitFor();
   // Navigation must cancel requests, never transfer permission to a new document.
   const navigating = site.evaluate(() => {
     window.ethereum.request({ method: 'eth_requestAccounts' }).catch(() => {});
@@ -142,11 +184,13 @@ try {
     browser: ctx.browser()?.version(),
     profile: 'isolated temporary profile',
     checks: [
-      'extension UI bg/en',
+      'English default even with Bulgarian browser locale',
+      'en/bg/de/es/fr selection persists across page reload',
+      'unsupported locale rejected without changing preference',
       'no address before permission',
       'EIP6963',
       'UI impersonation denied',
-      'permission rejection',
+      'localized permission prompt preserves origin and rejection',
       'navigation cancels',
       'second-origin isolation',
       'other wallet coexistence',

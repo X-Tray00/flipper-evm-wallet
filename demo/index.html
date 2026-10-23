@@ -1,81 +1,114 @@
 <!doctype html>
-<html lang="bg">
-  <meta charset="utf-8" /><meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
-  /><title>Flipper Wallet — local demo</title>
-  <h1>Flipper EVM Wallet</h1>
-  <p>Локална демонстрация · само тестови активи</p>
-  <small
-    >Няма сървър за ключове. Всеки подпис изисква проверка и физическо потвърждение върху
-    Flipper.</small
-  >
-  <section>
-    <h2>1. Свързване</h2>
-    <select id="wallets"></select
-    ><button id="connect">Поискай публичен адрес</button><button id="revoke">Отнеми достъпа</button>
-    <pre id="account">Няма избран адрес</pre>
-    <select id="chain">
-      <option value="11155111">Sepolia</option>
-      <option value="84532">Base Sepolia</option>
-      <option value="421614">Arbitrum Sepolia</option></select
-    ><button id="switch">Смени тестовата мрежа</button>
-  </section>
-  <section>
-    <h2>2. Преглед и подписване</h2>
-    <label>Получател<input id="to" placeholder="0x…" /></label
-    ><label>Тестов ETH<input id="value" value="0.000001" /></label
-    ><button id="send">Изпрати тестов ETH</button><button id="siwe">Вход със SIWE</button
-    ><button id="rejectTest">Провери отказ на eth_sign</button>
-    <p>
-      <small
-        >SIWE използва истинския origin на тази страница. Часовникът на устройството трябва да е
-        правилен в UTC.</small
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Flipper Wallet — local demo</title>
+  </head>
+  <body>
+    <header>
+      <h1>Flipper EVM Wallet</h1>
+      <label class="language-picker"
+        ><span data-i18n="language">Language</span>
+        <select id="demo-language">
+          <option value="en">English</option>
+          <option value="bg" lang="bg">Български</option>
+          <option value="de" lang="de">Deutsch</option>
+          <option value="es" lang="es">Español</option>
+          <option value="fr" lang="fr">Français</option>
+        </select>
+      </label>
+    </header>
+    <p data-i18n="localDemo">Local demo · test assets only</p>
+    <small data-i18n="demoSafety"
+      >No key server. Every signature requires review and physical confirmation on Flipper.</small
+    >
+    <section>
+      <h2 data-i18n="demoConnect">1. Connect</h2>
+      <select id="wallets" data-i18n-aria="demoWalletSelection" aria-label="Wallet"></select>
+      <button id="connect" data-i18n="requestAddress">Request public address</button>
+      <button id="revoke" data-i18n="revoke">Revoke access</button>
+      <pre id="account" data-i18n="noAccount">No account selected</pre>
+      <select id="chain" data-i18n-aria="demoNetworkSelection" aria-label="Test network">
+        <option value="11155111">Sepolia</option>
+        <option value="84532">Base Sepolia</option>
+        <option value="421614">Arbitrum Sepolia</option>
+      </select>
+      <button id="switch" data-i18n="changeNetwork">Change test network</button>
+    </section>
+    <section>
+      <h2 data-i18n="demoReview">2. Review and sign</h2>
+      <label
+        ><span data-i18n="demoRecipient">Recipient</span><input id="to" placeholder="0x…"
+      /></label>
+      <label><span data-i18n="testEth">Test ETH</span><input id="value" value="0.000001" /></label>
+      <button id="send" data-i18n="sendTestEth">Send test ETH</button>
+      <button id="siwe" data-i18n="signInSiwe">Sign in with SIWE</button>
+      <button id="rejectTest" data-i18n="rawRejection">Check eth_sign rejection</button>
+      <p>
+        <small data-i18n="siweHelp"
+          >SIWE uses this page's actual origin. The device clock must be correct in UTC.</small
+        >
+      </p>
+    </section>
+    <section>
+      <h2 data-i18n="demoContracts">3. Test contracts</h2>
+      <label
+        ><span data-i18n="contract">Contract</span
+        ><input
+          id="contract"
+          data-i18n-placeholder="verifiedContract"
+          placeholder="Verified address from deployments.json"
+      /></label>
+      <label
+        ><span data-i18n="operation">Operation</span
+        ><select id="operation">
+          <option value="ERC20 transfer" data-i18n="transfer">ERC20 transfer</option>
+          <option value="ERC20 approve" data-i18n="allowance">ERC20 allowance</option>
+          <option value="ERC20 revoke" data-i18n="cancelAllowance">Revoke ERC20 allowance</option>
+          <option>ERC721</option>
+          <option>ERC1155</option>
+        </select></label
       >
-    </p>
-  </section>
-  <section>
-    <h2>3. Тестови договори</h2>
-    <label>Договор<input id="contract" placeholder="Проверен адрес от deployments.json" /></label
-    ><label
-      >Действие<select id="operation">
-        <option>ERC20 transfer</option>
-        <option>ERC20 approve</option>
-        <option>ERC20 revoke</option>
-        <option>ERC721</option>
-        <option>ERC1155</option>
-      </select></label
-    ><label>Сурови единици<input id="units" value="1" /></label
-    ><label>NFT ID<input id="token" value="0" /></label
-    ><button id="asset">Подпиши извикването</button>
-    <button id="permit">Подпиши и провери Permit</button>
-    <p>
-      <small
-        >Permit остава отказан, докато устройството няма проверен регистър на внедрените
-        договори.</small
+      <label><span data-i18n="rawUnits">Raw units</span><input id="units" value="1" /></label>
+      <label><span data-i18n="token">NFT token ID</span><input id="token" value="0" /></label>
+      <button id="asset" data-i18n="signCall">Sign contract call</button>
+      <button id="permit" data-i18n="verifyPermit">Sign and verify Permit</button>
+      <p>
+        <small data-i18n="permitHelp"
+          >Permit is refused until the device has a verified registry of deployed contracts.</small
+        >
+      </p>
+    </section>
+    <section>
+      <h2 data-i18n="result">Result</h2>
+      <pre id="result" data-i18n="ready">Ready to test</pre>
+    </section>
+    <section>
+      <h2 data-i18n="feedbackTitle">Pilot feedback</h2>
+      <p data-i18n="feedbackPrivacy">
+        This form creates a local file. Nothing is sent automatically. Do not include PINs, recovery
+        words, keys or SD card records.
+      </p>
+      <label
+        ><span data-i18n="configuration">Setup</span
+        ><input id="configuration" placeholder="Momentum / Chrome / OS"
+      /></label>
+      <label
+        ><span data-i18n="feedbackQuestion"
+          >Which steps worked, and where did you encounter a problem?</span
+        ><textarea id="feedback" rows="4"></textarea>
+      </label>
+      <label
+        ><span data-i18n="pilotInterest">Interest in a paid pilot</span
+        ><select id="interest">
+          <option value="none" data-i18n="noInterest">Not interested</option>
+          <option value="support" data-i18n="support">Technical support</option>
+          <option value="integration" data-i18n="integration">Integration development</option>
+        </select></label
       >
-    </p>
-  </section>
-  <section>
-    <h2>Резултат</h2>
-    <pre id="result">Готово за тест</pre>
-  </section>
-  <section>
-    <h2>Обратна връзка за пилота</h2>
-    <p>
-      Формата създава локален файл. Нищо не се изпраща автоматично. Не включвай PIN, думи, ключове
-      или записи от картата.
-    </p>
-    <label>Конфигурация<input id="configuration" placeholder="Momentum / Chrome / OS" /></label
-    ><label
-      >Кои стъпки успяха и къде възникна проблем?<textarea id="feedback" rows="4"></textarea></label
-    ><label
-      >Интерес към платен пилот<select id="interest">
-        <option value="none">Не заявявам интерес</option>
-        <option value="support">Техническа поддръжка</option>
-        <option value="integration">Разработка на интеграция</option>
-      </select></label
-    ><button id="download">Изтегли отговорите</button>
-  </section>
-  <script type="module" src="/main.ts"></script>
+      <button id="download" data-i18n="download">Download responses</button>
+    </section>
+    <script type="module" src="/main.ts"></script>
+  </body>
 </html>

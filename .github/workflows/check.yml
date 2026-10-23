@@ -35,7 +35,8 @@ jobs:
           name: host-evidence-development
           path: |
             artifacts/browser-results.json
-            artifacts/wallet-ui-bg.png
+            artifacts/wallet-ui-en.png
+            artifacts/wallet-ui-mobile-en.png
             build/native/Testing/Temporary/LastTest.log
             dist/extension
   firmware:

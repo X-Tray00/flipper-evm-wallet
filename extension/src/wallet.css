@@ -199,16 +199,32 @@ h2 {
   line-height: 1.75;
   font-size: 12px;
 }
-.language {
-  flex-shrink: 0;
-  background: transparent;
-  color: var(--orange-light);
-  border-color: #796044;
-  padding: 8px 12px;
-  font-size: 16px;
+header {
+  flex-wrap: wrap;
 }
-.language:hover:not(:disabled) {
-  color: var(--ink);
+header > div {
+  flex: 1 1 280px;
+}
+.language-picker {
+  flex: 0 0 140px;
+  font-size: 11px;
+}
+.language-picker select {
+  margin-top: 6px;
+  padding: 8px 10px;
+  color: var(--orange-light);
+  font-family: var(--retro);
+  font-size: 18px;
+  line-height: 1.25;
+  border-color: #796044;
+}
+@media (max-width: 700px) {
+  header > div {
+    flex-basis: 220px;
+  }
+  .language-picker {
+    flex-basis: 135px;
+  }
 }
 .connection {
   display: flex;

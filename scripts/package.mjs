@@ -1,14 +1,16 @@
-import { readFile, writeFile, mkdir, copyFile, readdir, stat } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, copyFile, readdir, stat, rm } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 const root = process.cwd(),
   release = path.join(root, 'dist/packages');
-await mkdir(release, { recursive: true });
 const fap = await readFile('dist/flipper_evm_wallet.fap');
 const receipt = JSON.parse(await readFile('dist/firmware-build.json', 'utf8'));
 if (createHash('sha256').update(fap).digest('hex') !== receipt.sha256)
   throw new Error('FAP differs from the verified build receipt');
+// Recreate generated staging so removed screenshots and files cannot survive.
+await rm(release, { recursive: true, force: true });
+await mkdir(release, { recursive: true });
 const licenses = [];
 for (const [key, pkg] of Object.entries(
   JSON.parse(await readFile('package-lock.json', 'utf8')).packages,

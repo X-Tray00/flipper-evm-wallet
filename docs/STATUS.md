@@ -4,7 +4,7 @@
 
 ## Implementation delivered
 
-The Momentum application, crypto/vault/transaction core, USB protocol, Chrome extension, site permissions, BG/EN UI, local demo, test contracts, build/CI/package tooling, recovery guides, threat model and pilot materials are implemented. See README and PROTOCOL for the actual supported subset.
+The Momentum application, crypto/vault/transaction core, USB protocol, Chrome extension, site permissions, five-language UI (English by default), local demo, test contracts, build/CI/package tooling, recovery guides, threat model and pilot materials are implemented. See README and PROTOCOL for the actual supported subset.
 
 Two functional requirements remain deliberately closed:
 
@@ -18,7 +18,7 @@ Two functional requirements remain deliberately closed:
 | Native C core, storage and parser tests | 3 suites passed, UBSan | Host only; Apple ASan runtime unavailable |
 | Independent address/hash/signature/vault checks | 37 passed, viem/noble + Node OpenSSL | Host only |
 | Parser mutations | 70,000 random and structured mutations plus approval boundaries | Host only; no hardware fuzz proof |
-| Extension protocol and policy | 11 tests passed | Includes late cancelled replies |
+| Extension protocol, policy and locale preferences | 14 tests passed | Includes late cancelled replies and locale migration |
 | TypeScript and extension/demo production builds | Passed | Source checks/build only |
 | Chromium extension tests | Passed, version in artifacts/browser-results.json | Isolated temporary profile; no HID signing |
 | Contract fixtures | 2 Foundry tests passed, covering 3 allowed chain IDs and mainnet rejection | Local EVM, not public-network receipts |
@@ -30,6 +30,12 @@ Two functional requirements remain deliberately closed:
 The extension and local demo now share a Flipper-inspired black/orange theme and a locally bundled Pixelify Sans font with Cyrillic. Numeric inputs and addresses keep a readable monospace font. TypeScript, both production builds and the existing isolated Chromium suite passed after the restyle. A local layout review checked all six Bulgarian tabs at 1200, 510, 390 and 320 px, plus English settings, the permission prompt and the demo: no page overflow or browser errors, and the bundled font loaded. See [layout review](../artifacts/design-review.json) and the updated desktop/mobile screenshots.
 
 This cosmetic update changes the extension artifacts; the extension hashes in the baseline CI receipt below refer to its stated earlier commit. Firmware and its hardware evidence are unchanged.
+
+## Language update — 2026-10-23
+
+English is now the default in the extension and demo. The selector offers English, Bulgarian, German, Spanish and French, with a stored preference. The extension upgrades its former implicit Bulgarian default to English once, then preserves explicit choices. The README and mobile screenshots are captured from the real English interface. Labels, forms and review prompts are translated; signed payloads, device text and technical provider errors remain in their original form.
+
+TypeScript and both builds passed; 14 unit tests and the isolated browser suite passed, including five-language selection/reload persistence, unsupported-locale rejection and a French permission prompt preserving the actual origin and rejection behavior. A separate layout pass covered 90 combinations of language, tab and viewport width, plus all five demo languages; see [language review](../artifacts/language-review.json).
 
 ## CI and reproducibility
 
