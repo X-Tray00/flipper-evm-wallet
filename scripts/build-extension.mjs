@@ -28,3 +28,4 @@ await build({
   build: { outDir: out, emptyOutDir: false, minify: false, sourcemap: true },
 });
 await copyFile('extension/manifest.json', path.join(out, 'manifest.json'));
+await copyFile('assets/fonts/OFL.txt', path.join(out, 'FONT_LICENSE.txt'));

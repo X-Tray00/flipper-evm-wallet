@@ -25,9 +25,15 @@ Two functional requirements remain deliberately closed:
 | Dependency vulnerability database check | No reported vulnerabilities at time of run | No claim of absence of vulnerabilities |
 | FAP compilation and API imports | Momentum mntm-012 / API87.1 passed | See firmware build receipt |
 
+## Interface update — 2026-10-23
+
+The extension and local demo now share a Flipper-inspired black/orange theme and a locally bundled Pixelify Sans font with Cyrillic. Numeric inputs and addresses keep a readable monospace font. TypeScript, both production builds and the existing isolated Chromium suite passed after the restyle. A local layout review checked all six Bulgarian tabs at 1200, 510, 390 and 320 px, plus English settings, the permission prompt and the demo: no page overflow or browser errors, and the bundled font loaded. See [layout review](../artifacts/design-review.json) and the updated desktop/mobile screenshots.
+
+This cosmetic update changes the extension artifacts; the extension hashes in the baseline CI receipt below refer to its stated earlier commit. Firmware and its hardware evidence are unchanged.
+
 ## CI and reproducibility
 
-[Final code/build run](https://github.com/X-Tray00/flipper-evm-wallet/actions/runs/39950785666) passed on source commit `e503d1d3ade25daab47b8526ad9dc6329faa3c45`: Linux ASan+UBSan, native/differential/browser/contract checks and clean Momentum build. Downloaded Linux FAP exactly matches the locally built and device-tested FAP. All 15 extension build files also match across Linux/macOS. See [machine-readable evidence](../artifacts/build-and-test-results.json). The SDK source ordering and host-specific debuglink were stabilized without changing runtime behavior.
+[Baseline code/build run](https://github.com/X-Tray00/flipper-evm-wallet/actions/runs/39950785666) passed on source commit `e503d1d3ade25daab47b8526ad9dc6329faa3c45`: Linux ASan+UBSan, native/differential/browser/contract checks and clean Momentum build. Downloaded Linux FAP exactly matches the locally built and device-tested FAP. All 15 extension build files also match across Linux/macOS. See [machine-readable evidence](../artifacts/build-and-test-results.json). The SDK source ordering and host-specific debuglink were stabilized without changing runtime behavior.
 
 ## Device evidence
 

@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'Pixelify Sans';
+  src: url('./fonts/PixelifySans.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --orange: #ff8200;
+  --orange-light: #ffab42;
+  --ink: #181008;
+  --canvas: #0c0c0c;
+  --surface: #151515;
+  --surface-raised: #1e1c19;
+  --line: #3c342a;
+  --text: #f5ede2;
+  --muted: #b6aa9a;
+  --retro: 'Pixelify Sans', ui-monospace, monospace;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--mono);
+  font-synthesis: none;
+  color: var(--text);
+  background: var(--canvas);
+}
+
+* {
+  box-sizing: border-box;
+}
+::selection {
+  background: var(--orange);
+  color: var(--ink);
+}
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  border-radius: 0;
+}
+button,
+h1,
+h2,
+h3 {
+  font-family: var(--retro);
+}
+button {
+  padding: 11px 17px;
+  border: 1px solid var(--orange);
+  background: var(--orange);
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+  cursor: pointer;
+}
+button:hover:not(:disabled) {
+  background: var(--orange-light);
+  border-color: var(--orange-light);
+}
+button:disabled {
+  border-color: #4b4033;
+  background: #30291f;
+  color: #af9c84;
+  cursor: not-allowed;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #65513a;
+  background: #0e0e0e;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.5;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #a29582;
+  opacity: 1;
+}
+a {
+  color: var(--orange-light);
+  text-underline-offset: 3px;
+}

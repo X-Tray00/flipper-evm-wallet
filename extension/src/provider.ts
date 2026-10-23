@@ -71,7 +71,7 @@
   const icon =
     'data:image/svg+xml,' +
     encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#142b26"/><path d="M18 16h30v8H26v8h18v8H26v12h-8z" fill="#a2f3bc"/></svg>',
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M4 0h56v4h4v56h-4v4H4v-4H0V4h4z" fill="#ff8200"/><path d="M18 16h30v8H26v8h18v8H26v12h-8z" fill="#181008"/></svg>',
     );
   const detail = Object.freeze({
     info: Object.freeze({

@@ -1,0 +1,204 @@
+{
+  "date": "2026-10-23",
+  "scope": "Cosmetic browser review; isolated profile, no hardware signing",
+  "browser": "156.0.8078.4",
+  "checks": [
+    {
+      "name": "bg-tab-0",
+      "width": 1200,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-1",
+      "width": 1200,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-2",
+      "width": 1200,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-3",
+      "width": 1200,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-4",
+      "width": 1200,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-5",
+      "width": 1200,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-0",
+      "width": 510,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-1",
+      "width": 510,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-2",
+      "width": 510,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-3",
+      "width": 510,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-4",
+      "width": 510,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-5",
+      "width": 510,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-0",
+      "width": 390,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-1",
+      "width": 390,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-2",
+      "width": 390,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-3",
+      "width": 390,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-4",
+      "width": 390,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-5",
+      "width": 390,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-0",
+      "width": 320,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-1",
+      "width": 320,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-2",
+      "width": 320,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-3",
+      "width": 320,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-4",
+      "width": 320,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "bg-tab-5",
+      "width": 320,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "en-settings",
+      "width": 510,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "demo",
+      "width": 1200,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "demo",
+      "width": 390,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    },
+    {
+      "name": "en-approval",
+      "width": 510,
+      "overflow": false,
+      "font": true,
+      "headingFont": "\"Pixelify Sans\", ui-monospace, monospace"
+    }
+  ],
+  "errors": []
+}

@@ -1,5 +1,23 @@
 {
-  "trezor_crypto": {"repository":"https://github.com/trezor/trezor-firmware", "commit":"30d30b37751c2d8e75da5746e18864948095f5db", "path":"crypto", "license":"vendor/trezor-crypto/LICENSE"},
-  "momentum": {"repository":"https://github.com/Next-Flip/Momentum-Firmware", "commit":"e1784e7418d8b074e971983ceb6fef0f37e52ae4", "tag":"mntm-012", "api":"87.1", "sdk_sha256":"c90530c3e0aa7bc4356b8521df20d23d7b4a5435ab58a2530ffb696200408cc2"},
-  "ufbt":"0.2.6"
+  "trezor_crypto": {
+    "repository": "https://github.com/trezor/trezor-firmware",
+    "commit": "30d30b37751c2d8e75da5746e18864948095f5db",
+    "path": "crypto",
+    "license": "vendor/trezor-crypto/LICENSE"
+  },
+  "momentum": {
+    "repository": "https://github.com/Next-Flip/Momentum-Firmware",
+    "commit": "e1784e7418d8b074e971983ceb6fef0f37e52ae4",
+    "tag": "mntm-012",
+    "api": "87.1",
+    "sdk_sha256": "c90530c3e0aa7bc4356b8521df20d23d7b4a5435ab58a2530ffb696200408cc2"
+  },
+  "ufbt": "0.2.6",
+  "pixelify_sans": {
+    "repository": "https://github.com/google/fonts",
+    "commit": "8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5",
+    "path": "ofl/pixelifysans/PixelifySans[wght].ttf",
+    "sha256": "9ba86cd010a4de309d263ceff8e8044092c9db7efda869620cb9ff1c4389e8a5",
+    "license": "assets/fonts/OFL.txt"
+  }
 }

@@ -33,6 +33,7 @@ try {
   );
   assert.equal(uiState.result.connected, false);
   assert.equal(uiState.result.state.chain, 11155111);
+  await ui.evaluate(() => document.fonts.ready);
   await ui.screenshot({ path: 'artifacts/wallet-ui-bg.png', fullPage: true });
   await ui.getByRole('button', { name: 'EN', exact: true }).click();
   await ui.getByRole('heading', { name: 'Your key. Your decision.' }).waitFor();
