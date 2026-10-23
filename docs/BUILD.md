@@ -9,7 +9,7 @@
 
 Install Python3, CMake, a C compiler and Node22.22.3. Create `.venv` and install requirements. Run `npm ci --ignore-scripts` with npm12.2.1. Do not run an automatic major-version dependency update as part of a build.
 
-`scripts/setup-sdk.sh` downloads the SDK, verifies its checksum and installs it into `.ufbt/` in this repository. It does not replace `~/.ufbt`. `scripts/build-firmware.sh` refuses another Momentum SDK, verifies vendored file hashes and runs uFBT's API import check. The distributable FAP removes only `.gnu_debuglink`: its debug-file CRC depends on absolute build paths. Runtime sections are unchanged, and the separate debug ELF remains local. A successful build writes `dist/firmware-build.json`; packaging checks its FAP hash.
+`scripts/setup-sdk.sh` downloads the SDK, verifies its checksum and installs it into `.ufbt/` in this repository. It does not replace `~/.ufbt`. `scripts/build-firmware.sh` refuses another Momentum SDK, verifies vendored file hashes and runs uFBT's API import check. Builds fix `PYTHONHASHSEED=0` because the pinned SDK gathers source patterns through a Python set; this stabilizes link order. The distributable FAP removes only `.gnu_debuglink`: its debug-file CRC depends on absolute build paths. Runtime sections are unchanged, and the separate debug ELF remains local. A successful build writes `dist/firmware-build.json`; packaging checks its FAP hash.
 
 ```sh
 scripts/setup-sdk.sh

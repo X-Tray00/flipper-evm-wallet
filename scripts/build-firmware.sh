@@ -1,5 +1,7 @@
 #!/bin/sh
 set -eu
+# Momentum GatherSources uses a Python set; fix its iteration/link order.
+export PYTHONHASHSEED=0
 cd "$(dirname "$0")/.."
 python3 scripts/verify-vendor.py
 python3 scripts/prepare-build.py
