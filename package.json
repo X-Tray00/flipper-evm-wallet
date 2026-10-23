@@ -10,7 +10,7 @@
     "test:vectors": "node tests/differential.mjs",
     "contracts:build": "node scripts/compile-contracts.mjs",
     "demo": "vite demo --host 127.0.0.1",
-    "demo:build": "vite build demo --outDir ../dist/demo"
+    "demo:build": "vite build demo --outDir ../dist/demo --emptyOutDir"
   },
   "dependencies": {
     "react": "19.3.1",

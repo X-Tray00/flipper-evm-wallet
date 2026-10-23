@@ -85,7 +85,7 @@ header h1 {
   font-size: 11px;
 }
 .language-picker select {
-  font-family: var(--retro);
+  font-family: var(--display-font);
   font-size: 18px;
   color: var(--orange-light);
 }

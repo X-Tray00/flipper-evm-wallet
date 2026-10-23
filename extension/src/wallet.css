@@ -55,7 +55,7 @@ aside {
   display: flex;
   align-items: center;
   gap: 13px;
-  font-family: var(--retro);
+  font-family: var(--display-font);
   font-weight: 600;
   letter-spacing: 0.04em;
   font-size: 25px;
@@ -213,7 +213,7 @@ header > div {
   margin-top: 6px;
   padding: 8px 10px;
   color: var(--orange-light);
-  font-family: var(--retro);
+  font-family: var(--display-font);
   font-size: 18px;
   line-height: 1.25;
   border-color: #796044;

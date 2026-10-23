@@ -27,7 +27,7 @@ Two functional requirements remain deliberately closed:
 
 ## Interface update — 2026-10-23
 
-The extension and local demo now share a Flipper-inspired black/orange theme and a locally bundled Pixelify Sans font with Cyrillic. Numeric inputs and addresses keep a readable monospace font. TypeScript, both production builds and the existing isolated Chromium suite passed after the restyle. A local layout review checked all six Bulgarian tabs at 1200, 510, 390 and 320 px, plus English settings, the permission prompt and the demo: no page overflow or browser errors, and the bundled font loaded. See [layout review](../artifacts/design-review.json) and the updated desktop/mobile screenshots.
+The extension and local demo now share a Flipper-inspired black/orange theme and locally bundled IBM Plex Mono with Cyrillic. Numeric inputs and addresses keep a readable monospace font. TypeScript, both production builds and the existing isolated Chromium suite passed after the restyle. A layout review checked all six tabs in all five languages at 1200, 390 and 320 px, plus the demo: no page overflow or browser errors, and the new font loaded. See [current language and layout review](../artifacts/language-review.json) and the updated desktop/mobile screenshots.
 
 This cosmetic update changes the extension artifacts; the extension hashes in the baseline CI receipt below refer to its stated earlier commit. Firmware and its hardware evidence are unchanged.
 
