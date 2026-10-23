@@ -13,11 +13,11 @@
     "sdk_sha256": "c90530c3e0aa7bc4356b8521df20d23d7b4a5435ab58a2530ffb696200408cc2"
   },
   "ufbt": "0.2.6",
-  "jura": {
+  "kelly_slab": {
     "repository": "https://github.com/google/fonts",
-    "commit": "6e4b84c976cadb3c49a40fd9a1c203e4f7fcf2da",
-    "path": "ofl/jura/Jura[wght].ttf",
-    "sha256": "188b415d44810d68b4d6b4a8c281f864184c2b8edc5e88e6357c89f7b44075bf",
+    "commit": "e7db6ca603fd4862010383ff17ffd6cc4ffac1c0",
+    "path": "ofl/kellyslab/KellySlab-Regular.ttf",
+    "sha256": "cbf98bddb534c52d2f1150aed233c53e5e3a7966b7be1ab860550c23f9930c27",
     "license": "assets/fonts/OFL.txt"
   }
 }

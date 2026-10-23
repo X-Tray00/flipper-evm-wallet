@@ -1,8 +1,8 @@
 @font-face {
-  font-family: Jura;
-  src: url('./fonts/Jura.ttf') format('truetype');
+  font-family: 'Kelly Slab';
+  src: url('./fonts/KellySlab-Regular.ttf') format('truetype');
   font-style: normal;
-  font-weight: 400 700;
+  font-weight: 400;
   font-display: swap;
 }
 
@@ -17,7 +17,7 @@
   --line: #3c342a;
   --text: #f5ede2;
   --muted: #b6aa9a;
-  --display-font: Jura, ui-sans-serif, sans-serif;
+  --display-font: 'Kelly Slab', ui-sans-serif, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-family: var(--mono);
   font-synthesis: none;
@@ -51,34 +51,35 @@ h3 {
   overflow-wrap: anywhere;
 }
 button {
-  min-height: 42px;
-  padding: 10px 17px;
-  border: 1px solid #ffb34c;
-  border-radius: 9px;
-  background: linear-gradient(180deg, #ffad35 0%, #ff8b08 100%);
+  min-height: 43px;
+  padding: 9px 17px 8px;
+  border: 1px solid #ffac53;
+  border-bottom: 3px solid #ab5109;
+  border-radius: 5px;
+  background: #f58c24;
   color: var(--ink);
-  box-shadow: inset 0 1px 0 #ffe0a070, 0 3px 9px #0005;
+  box-shadow: none;
   font-size: 18px;
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1.3;
   cursor: pointer;
-  transition: background 140ms ease, border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+  transition: background-color 130ms ease, border-color 130ms ease, transform 130ms ease;
 }
 button:hover:not(:disabled) {
-  background: linear-gradient(180deg, #ffc160 0%, #ff9c1d 100%);
-  border-color: #ffd08a;
-  box-shadow: inset 0 1px 0 #ffe6ba, 0 5px 13px #0007;
-  transform: translateY(-1px);
+  background: #ffad4a;
+  border-color: #ffd094;
+  border-bottom-color: #ab5109;
 }
 button:active:not(:disabled) {
-  box-shadow: inset 0 2px 4px #4d260045, 0 1px 3px #0005;
-  transform: translateY(1px);
+  border-bottom-width: 1px;
+  transform: translateY(2px);
 }
 button:disabled {
   border-color: #4b4033;
+  border-bottom-width: 3px;
   background: #30291f;
   color: #af9c84;
-  box-shadow: none;
   cursor: not-allowed;
 }
 @media (prefers-reduced-motion: reduce) {

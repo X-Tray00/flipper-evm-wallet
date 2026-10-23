@@ -8,7 +8,7 @@ Original application/core/extension/test code is MIT. The selected crypto files 
 - `vendor/trezor-crypto.sha256.json`: integrity inventory; changes require a pin/review update.
 - `dependencies.json`: source/SDK provenance.
 - `package-lock.json`: exact JS packages and registry integrity hashes.
-- `assets/fonts/Jura.ttf`: variable Jura font with Cyrillic, pinned in `dependencies.json` to Google Fonts commit `6e4b84c976cadb3c49a40fd9a1c203e4f7fcf2da`. SIL Open Font License 1.1 is retained in `assets/fonts/OFL.txt` and copied as `FONT_LICENSE.txt` in the extension and demo builds. The font is bundled locally; no external font service is contacted.
+- `assets/fonts/KellySlab-Regular.ttf`: Kelly Slab display font with Cyrillic, pinned in `dependencies.json` to Google Fonts commit `e7db6ca603fd4862010383ff17ffd6cc4ffac1c0`. SIL Open Font License 1.1 is retained in `assets/fonts/OFL.txt` and copied as `FONT_LICENSE.txt` in the extension and demo builds. The font is bundled locally; no external font service is contacted.
 
 Crypto compile settings disable BIP32/BIP39 caches and 25519 derivation, enable Ethereum/Keccak and use size-optimized portable curve code. A local Furi adapter supplies CSPRNG bytes, a fail-stop fault handler and `explicit_bzero`, which Momentum87.1 does not export. Cryptographic algorithms are not replaced with homegrown versions.
 

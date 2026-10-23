@@ -4,29 +4,29 @@ body {
   margin: 0;
 }
 button.secondary {
-  background: #2a2119;
-  border-color: #795a3b;
-  color: #ffc079;
-  box-shadow: inset 0 1px 0 #ffffff10, 0 2px 6px #0004;
+  background: #211b15;
+  border-color: #806043;
+  border-bottom-color: #52371f;
+  color: #ffd09b;
 }
 button.secondary:hover:not(:disabled) {
-  background: #39291b;
-  border-color: #b37a3e;
+  background: #30241a;
+  border-color: #ac7846;
+  border-bottom-color: #68421f;
 }
 button.ghost {
-  background: #271b1a;
+  background: #241b19;
   border-color: #795047;
+  border-bottom-color: #59322a;
   color: #ffb7a4;
-  box-shadow: inset 0 1px 0 #ffffff0a, 0 2px 6px #0004;
 }
 button.ghost:hover:not(:disabled) {
-  background: #3c211b;
+  background: #35231e;
   border-color: #ffb7a4;
 }
 button.secondary:disabled {
   border-color: #4b4033;
   color: #af9c84;
-  box-shadow: none;
 }
 label {
   display: block;
@@ -60,8 +60,8 @@ aside {
   align-items: center;
   gap: 13px;
   font-family: var(--display-font);
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
   font-size: 25px;
   line-height: 1;
   color: var(--orange);
@@ -117,18 +117,16 @@ nav button {
   font-size: 19px;
   font-weight: 400;
   padding: 12px 10px;
-  box-shadow: none;
+  border-bottom-width: 1px;
 }
 nav button:hover:not(:disabled) {
-  background: #2b231b;
+  background: #292119;
   border-color: #624629;
-  box-shadow: none;
 }
 nav button.active {
-  background: linear-gradient(90deg, #382718, #292018);
+  background: #322313;
   border-color: #825527;
-  color: #ffc073;
-  box-shadow: inset 0 1px 0 #ffba5326;
+  color: #ffb457;
 }
 nav button.active::before {
   content: '';
@@ -189,15 +187,15 @@ header > div {
   margin-top: 0;
 }
 h1 {
-  font-weight: 500;
-  font-size: 38px;
+  font-weight: 400;
+  font-size: 39px;
   line-height: 1.15;
   margin: 14px 0 10px;
   text-wrap: balance;
 }
 h2 {
-  font-size: 26px;
-  font-weight: 500;
+  font-size: 27px;
+  font-weight: 400;
   line-height: 1.2;
   margin-top: 0;
 }
@@ -258,7 +256,7 @@ header > div {
 }
 .connection button {
   flex-shrink: 0;
-  padding: 9px 13px;
+  padding: 9px 12px 7px;
   font-size: 17px;
 }
 .selectors {
@@ -318,29 +316,29 @@ header > div {
   margin-bottom: 0;
 }
 .balance-card button {
-  background: linear-gradient(180deg, #33200d, var(--ink));
-  border-color: #4a2a0d;
-  color: #ffc780;
-  box-shadow: inset 0 1px 0 #ffb45a38, 0 3px 8px #7f37003d;
+  background: #241509;
+  border-color: #6e360a;
+  border-bottom-color: #100b06;
+  color: #ffce90;
 }
 .balance-card button:hover:not(:disabled) {
-  background: linear-gradient(180deg, #4c2b0e, #291809);
-  border-color: #603609;
+  background: #402409;
+  border-color: #7a420d;
+  border-bottom-color: #1b1006;
 }
 .balance-card button.secondary {
-  background: #ffbf642e;
-  border-color: #8d4d0b;
+  background: #ffcf90;
+  border-color: #87480b;
+  border-bottom-color: #87480b;
   color: var(--ink);
-  box-shadow: inset 0 1px 0 #fff2cb48;
 }
 .balance-card button.secondary:hover:not(:disabled) {
-  background: #ffc97670;
+  background: #ffe0ac;
 }
 .balance-card button:disabled {
   border-color: #985711;
   background: #1810080d;
   color: #613809;
-  box-shadow: none;
 }
 .balance-card :focus-visible {
   outline-color: var(--ink);
@@ -462,7 +460,7 @@ footer {
     font-size: 17px;
   }
   h1 {
-    font-size: 34px;
+    font-size: 35px;
   }
 }
 @media (max-width: 700px) {
@@ -513,10 +511,10 @@ footer {
     padding: 28px 20px;
   }
   h1 {
-    font-size: 32px;
+    font-size: 33px;
   }
   h2 {
-    font-size: 25px;
+    font-size: 26px;
   }
   .connection {
     margin-top: 22px;
@@ -526,7 +524,7 @@ footer {
   }
   .connection button {
     font-size: 16px;
-    padding: 9px;
+    padding: 9px 10px 7px;
   }
   .selectors {
     gap: 12px;

@@ -14,7 +14,7 @@
     390,
     320
   ],
-  "font": "Jura loaded with Cyrillic",
+  "font": "Kelly Slab loaded with Cyrillic",
   "demoChecks": [
     "English default",
     "five locales persist on reload",
