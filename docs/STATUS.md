@@ -25,11 +25,15 @@ Two functional requirements remain deliberately closed:
 | Dependency vulnerability database check | No reported vulnerabilities at time of run | No claim of absence of vulnerabilities |
 | FAP compilation and API imports | Momentum mntm-012 / API87.1 passed | See firmware build receipt |
 
+## CI and reproducibility
+
+[Final code/build run](https://github.com/X-Tray00/flipper-evm-wallet/actions/runs/39950785666) passed on source commit `e503d1d3ade25daab47b8526ad9dc6329faa3c45`: Linux ASan+UBSan, native/differential/browser/contract checks and clean Momentum build. Downloaded Linux FAP exactly matches the locally built and device-tested FAP. All 15 extension build files also match across Linux/macOS. See [machine-readable evidence](../artifacts/build-and-test-results.json). The SDK source ordering and host-specific debuglink were stabilized without changing runtime behavior.
+
 ## Device evidence
 
 Connected device reports Momentum mntm-012 (e1784e74), API87.1. The wallet is installed separately under Tools. The read-only engineering probe uses public zero-entropy fixtures and does not open a user vault.
 
-Observed probe: all five independent addresses, known signature, authenticated vault with the actual device wrapping key, tamper rejection, USB session and rejection of locked signing. It completes 100 **locked status** exchanges; these are not 100 physical signing/cancel cycles. Hash-bound final results are recorded in artifacts/hardware-probe.json when the probe completes.
+Observed probe: all five independent addresses, known signature, authenticated vault with the actual device wrapping key, tamper rejection, USB session and rejection of locked signing. It completes 100 **locked status** exchanges; these are not 100 physical signing/cancel cycles. Hash-bound final results are recorded in [hardware-probe.json](../artifacts/hardware-probe.json): all four crypto flags passed, 84,575 ms combined self-check and 51,272 bytes minimum observed free heap. This is not a worst-case signing measurement. qFlipper reconnected to Momentum after the app exited.
 
 ## Required before public beta
 
@@ -39,7 +43,7 @@ Observed probe: all five independent addresses, known signature, authenticated v
 - Chrome with granted WebHID permission through the entire site-to-device flow. Brave remains unverified.
 - Faucet funds and confirmed supported-operation receipts on the planned networks; reviewed Permit deployments; real SIWE verification.
 - Resolve the Base total-fee requirement. Full three-network support is not claimed.
-- Independent security review, clean-build reproducibility evidence and downloaded release reinstallation. External audit remains a later prerequisite for considering real assets.
+- Independent security review and downloaded release reinstallation. External audit remains a later prerequisite for considering real assets.
 
 The user is away. Physical entry/approval is intentionally not replaced by qFlipper remote input. No user seed/PIN has been created, read or transmitted by these tests. No public-network transaction has been broadcast.
 

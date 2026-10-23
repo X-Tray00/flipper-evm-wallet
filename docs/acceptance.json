@@ -3,12 +3,19 @@
   "release_status": "development",
   "gates": {
     "reproducible_build": {
-      "passed": false,
-      "evidence": []
+      "passed": true,
+      "evidence": [
+        "artifacts/build-and-test-results.json",
+        "artifacts/hardware-probe.json"
+      ],
+      "scope": "Identical distributable FAP and 15 extension build files on macOS and Linux"
     },
     "native_crypto_and_parsers": {
-      "passed": false,
-      "evidence": []
+      "passed": true,
+      "evidence": [
+        "artifacts/build-and-test-results.json"
+      ],
+      "scope": "Host model only, Linux ASan+UBSan; external review and hardware signing remain separate gates"
     },
     "browser_isolation": {
       "passed": true,

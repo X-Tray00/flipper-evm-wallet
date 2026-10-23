@@ -2,7 +2,7 @@
 
 An open source **testnet-only development wallet** for stock Flipper Zero running Momentum, with a Chrome Manifest V3 extension and direct WebHID transport.
 
-**Development build. Not an accepted public beta. Not audited. Never import a real wallet or use real assets.** The physical approval, recovery and real-network acceptance gates are still open. See [current evidence and remaining work](docs/STATUS.md).
+**Development build. Not an accepted public beta. Not audited. Never import a real wallet or use real assets.** The physical approval, recovery and real-network acceptance gates are still open ([hands-on checklist](docs/HARDWARE_ACCEPTANCE.md)). See [current evidence and remaining work](docs/STATUS.md).
 
 ![Bulgarian wallet interface](artifacts/wallet-ui-bg.png)
 

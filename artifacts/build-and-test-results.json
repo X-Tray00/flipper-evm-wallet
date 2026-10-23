@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "date": "2026-10-23",
+  "source_commit": "e503d1d3ade25daab47b8526ad9dc6329faa3c45",
+  "ci_url": "https://github.com/X-Tray00/flipper-evm-wallet/actions/runs/39950785666",
+  "ci_conclusion": "success",
+  "ci_jobs": {
+    "host": "success",
+    "firmware": "success"
+  },
+  "fap_sha256": "39e2a6f9ecdba04534baa27e20b39402cbab20ab9a764a4a40aaf681b6b365d8",
+  "local_and_downloaded_linux_fap_identical": true,
+  "downloaded_linux_fap_matches_hardware_probe": true,
+  "extension_files_identical_across_macos_linux": {
+    "secp256k1-CQsJAntL.js": "9cd166de6fcc6a067a57c3f074d94bce0f62a5149611db5190b249fc48b7f9d0",
+    "sha2-D9FFi08D.js": "9e078f7938e1ca6e8956b033d1a59629409f08ed994d112b76175d26a5ce2aa3",
+    "secp256k1-CQsJAntL.js.map": "8b694be80f8e9463f88d902e4bf8bfbc2db787d7b6aae2b5947368dccbbe11de",
+    "index.html": "eed43462b5f85a0c6ee3b24d4b17a47beb3004a9d46b0adbed87fe319b1b0a4f",
+    "background.js": "93f18a2c293a47fc747f5d9980f2dfe5be14606eeaa0bfea3d3fd8d6fbf7215d",
+    "provider.js.map": "95be57b59a528cf4c831e58e511751779c0b9e06813f6a5ba118b49970395254",
+    "provider.js": "1d0f05de7baa6b6b6dd279af3002da7f22e649a5201972fe1052a9ff72dc7c83",
+    "content.js.map": "70e68641ca4c996167b7cc44f75ad2032c3b56ef597678f1e99d30ce1e846a59",
+    "manifest.json": "cd6f440902c3c0fe9388dcd1928b8e419fdc856305d7728f7ce07719f8b4db98",
+    "content.js": "e76945e0810dc0ddc4f8d5bfc3589bb61dd5804a2e62d5b087f45d2da52608ee",
+    "background.js.map": "f36328db015cdce81bc7fbe4d9d99a546ec6b7bef064c849a6608c9db2481aef",
+    "sha2-D9FFi08D.js.map": "edbbcfae8ce2a5ac68635ad1fe5ba4cc65f7e5ea3790fe05e0a233e413ef0b7f",
+    "assets/index-DR38f_SA.js": "0127a542ecad11f0be04b0838563e24f08044386f7476a78a440cb22b7e4e70f",
+    "assets/index-DR38f_SA.js.map": "14feb1df811aa87b9d1ef5f8bf59626fb452cf153c25f48e83a9d5f50d2abbed",
+    "assets/index-CIvshVuJ.css": "4a96bb8226a96d42d1d3ea60bd131df7d923a4e61053f945804b1bcebd938c4b"
+  },
+  "native": {
+    "suites": 3,
+    "independent_checks": 37,
+    "parser_mutations": 70000,
+    "linux_sanitizers": [
+      "address",
+      "undefined"
+    ],
+    "macos_sanitizers": [
+      "undefined"
+    ]
+  },
+  "extension_unit_tests": 11,
+  "contract_local_evm_tests": 2,
+  "public_network_transactions": 0,
+  "physical_wallet_setup_and_approval_verified": false
+}
