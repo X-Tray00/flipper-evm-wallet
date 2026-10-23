@@ -13,11 +13,12 @@
     "sdk_sha256": "c90530c3e0aa7bc4356b8521df20d23d7b4a5435ab58a2530ffb696200408cc2"
   },
   "ufbt": "0.2.6",
-  "kelly_slab": {
+  "press_start_2p": {
     "repository": "https://github.com/google/fonts",
     "commit": "e7db6ca603fd4862010383ff17ffd6cc4ffac1c0",
-    "path": "ofl/kellyslab/KellySlab-Regular.ttf",
-    "sha256": "cbf98bddb534c52d2f1150aed233c53e5e3a7966b7be1ab860550c23f9930c27",
-    "license": "assets/fonts/OFL.txt"
+    "path": "ofl/pressstart2p/PressStart2P-Regular.ttf",
+    "sha256": "034c77f1f05ec89421e4a63f0e3a4ca1ecf852cc6d2bf611f126f275728e017d",
+    "license": "assets/fonts/OFL.txt",
+    "fontlog": "assets/fonts/FONTLOG.txt"
   }
 }

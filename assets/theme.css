@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Kelly Slab';
-  src: url('./fonts/KellySlab-Regular.ttf') format('truetype');
+  font-family: 'Press Start 2P';
+  src: url('./fonts/PressStart2P-Regular.ttf') format('truetype');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -17,7 +17,7 @@
   --line: #3c342a;
   --text: #f5ede2;
   --muted: #b6aa9a;
-  --display-font: 'Kelly Slab', ui-sans-serif, sans-serif;
+  --display-font: 'Press Start 2P', ui-monospace, monospace;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-family: var(--mono);
   font-synthesis: none;
@@ -51,18 +51,18 @@ h3 {
   overflow-wrap: anywhere;
 }
 button {
-  min-height: 43px;
-  padding: 9px 17px 8px;
+  min-height: 44px;
+  padding: 10px 14px 8px;
   border: 1px solid #ffac53;
   border-bottom: 3px solid #ab5109;
-  border-radius: 5px;
+  border-radius: 2px;
   background: #f58c24;
   color: var(--ink);
   box-shadow: none;
-  font-size: 18px;
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.015em;
-  line-height: 1.3;
+  letter-spacing: 0;
+  line-height: 1.6;
   cursor: pointer;
   transition: background-color 130ms ease, border-color 130ms ease, transform 130ms ease;
 }

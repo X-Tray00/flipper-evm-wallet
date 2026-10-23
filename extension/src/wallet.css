@@ -61,8 +61,8 @@ aside {
   gap: 13px;
   font-family: var(--display-font);
   font-weight: 400;
-  letter-spacing: 0.01em;
-  font-size: 25px;
+  letter-spacing: 0;
+  font-size: 14px;
   line-height: 1;
   color: var(--orange);
 }
@@ -83,7 +83,7 @@ aside {
   height: 44px;
   background: var(--orange);
   color: var(--ink);
-  font-size: 36px;
+  font-size: 24px;
   clip-path: polygon(
     4px 0,
     calc(100% - 4px) 0,
@@ -114,7 +114,7 @@ nav button {
   border-color: transparent;
   color: var(--muted);
   text-align: left;
-  font-size: 19px;
+  font-size: 10px;
   font-weight: 400;
   padding: 12px 10px;
   border-bottom-width: 1px;
@@ -188,15 +188,15 @@ header > div {
 }
 h1 {
   font-weight: 400;
-  font-size: 39px;
-  line-height: 1.15;
+  font-size: 22px;
+  line-height: 1.5;
   margin: 14px 0 10px;
   text-wrap: balance;
 }
 h2 {
-  font-size: 27px;
+  font-size: 17px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.5;
   margin-top: 0;
 }
 .muted {
@@ -219,7 +219,7 @@ header > div {
   padding: 8px 10px;
   color: var(--orange-light);
   font-family: var(--display-font);
-  font-size: 18px;
+  font-size: 11px;
   line-height: 1.25;
   border-color: #796044;
 }
@@ -256,8 +256,8 @@ header > div {
 }
 .connection button {
   flex-shrink: 0;
-  padding: 9px 12px 7px;
-  font-size: 17px;
+  padding: 10px 12px 8px;
+  font-size: 10px;
 }
 .selectors {
   display: grid;
@@ -296,7 +296,7 @@ header > div {
   color: var(--ink);
 }
 .balance-card h2 {
-  font-size: 58px;
+  font-size: 32px;
   font-weight: 500;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -304,7 +304,7 @@ header > div {
   overflow-wrap: anywhere;
 }
 .balance-card h2 span {
-  font-size: 22px;
+  font-size: 13px;
   margin-left: 14px;
 }
 .balance-card small {
@@ -365,7 +365,7 @@ header > div {
   margin: 20px 0 12px;
 }
 .actions button {
-  font-size: 18px;
+  font-size: 11px;
 }
 .notice {
   padding: 16px 18px;
@@ -421,7 +421,7 @@ header > div {
 }
 .row button {
   justify-self: start;
-  font-size: 18px;
+  font-size: 11px;
 }
 .row strong {
   font-size: 13px;
@@ -453,14 +453,14 @@ footer {
     padding: 34px 16px;
   }
   .brand {
-    font-size: 23px;
+    font-size: 13px;
     gap: 10px;
   }
   nav button {
-    font-size: 17px;
+    font-size: 9px;
   }
   h1 {
-    font-size: 35px;
+    font-size: 21px;
   }
 }
 @media (max-width: 700px) {
@@ -473,13 +473,13 @@ footer {
     border-bottom: 1px solid var(--line);
   }
   .brand {
-    font-size: 24px;
+    font-size: 14px;
   }
   .mark {
     flex-basis: 36px;
     width: 36px;
     height: 36px;
-    font-size: 30px;
+    font-size: 21px;
   }
   .brand div span {
     font-size: 9px;
@@ -499,7 +499,7 @@ footer {
   nav button {
     display: block;
     flex-shrink: 0;
-    font-size: 17px;
+    font-size: 10px;
     white-space: nowrap;
     padding: 9px 10px;
   }
@@ -511,10 +511,10 @@ footer {
     padding: 28px 20px;
   }
   h1 {
-    font-size: 33px;
+    font-size: 19px;
   }
   h2 {
-    font-size: 26px;
+    font-size: 16px;
   }
   .connection {
     margin-top: 22px;
@@ -523,8 +523,8 @@ footer {
     padding: 12px;
   }
   .connection button {
-    font-size: 16px;
-    padding: 9px 10px 7px;
+    font-size: 10px;
+    padding: 10px 10px 8px;
   }
   .selectors {
     gap: 12px;
@@ -534,7 +534,7 @@ footer {
     padding: 22px;
   }
   .balance-card h2 {
-    font-size: 48px;
+    font-size: 28px;
   }
   .approval {
     padding: 20px;
