@@ -8,7 +8,7 @@ Flipper's own [crypto API documentation](https://developer.flipper.net/flipperze
 
 ## Reporting a vulnerability
 
-Use the GitHub repository's **Security → Report a vulnerability** private reporting channel when enabled. If unavailable, open an issue containing only a request for a private contact channel; do not include exploits, seed phrases, PINs, SD records, user addresses or sensitive logs in a public issue. There is currently no paid bug bounty, response-time SLA or dedicated staffed incident service.
+Use the enabled [private vulnerability reporting channel](https://github.com/X-Tray00/flipper-evm-wallet/security/advisories/new) (**Security → Report a vulnerability**). If unavailable, open an issue containing only a request for a private contact channel; do not include exploits, seed phrases, PINs, SD records, user addresses or sensitive logs in a public issue. There is currently no paid bug bounty, response-time SLA or dedicated staffed incident service.
 
 Include the commit/build hash, Momentum version, affected operation, minimal synthetic reproduction, expected/actual behavior and whether the result was observed on hardware or a host model. Use public test vectors only.
 

@@ -173,9 +173,13 @@ run('permit', async () => {
   } as const;
   const signature = await provider.request({
     method: 'eth_signTypedData_v4',
-    params: [account, JSON.stringify(typed, (_, v) => typeof v === 'bigint' ? v.toString() : v)],
+    params: [account, JSON.stringify(typed, (_, v) => (typeof v === 'bigint' ? v.toString() : v))],
   });
-  const recovered = await recoverTypedDataAddress({ ...typed, types: { Permit: typed.types.Permit }, signature });
+  const recovered = await recoverTypedDataAddress({
+    ...typed,
+    types: { Permit: typed.types.Permit },
+    signature,
+  });
   if (recovered.toLowerCase() !== account.toLowerCase()) throw Error('Permit signature mismatch');
   return {
     verified: true,

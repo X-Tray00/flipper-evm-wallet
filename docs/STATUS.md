@@ -17,7 +17,7 @@ Two functional requirements remain deliberately closed:
 | --- | --- | --- |
 | Native C core, storage and parser tests | 3 suites passed, UBSan | Host only; Apple ASan runtime unavailable |
 | Independent address/hash/signature/vault checks | 37 passed, viem/noble + Node OpenSSL | Host only |
-| Parser mutations | 50,000 deterministic inputs plus approval boundaries | Host only; no hardware fuzz proof |
+| Parser mutations | 70,000 random and structured mutations plus approval boundaries | Host only; no hardware fuzz proof |
 | Extension protocol and policy | 11 tests passed | Includes late cancelled replies |
 | TypeScript and extension/demo production builds | Passed | Source checks/build only |
 | Chromium extension tests | Passed, version in artifacts/browser-results.json | Isolated temporary profile; no HID signing |

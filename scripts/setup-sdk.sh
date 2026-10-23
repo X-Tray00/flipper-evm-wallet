@@ -12,4 +12,4 @@ from pathlib import Path
 expected='c90530c3e0aa7bc4356b8521df20d23d7b4a5435ab58a2530ffb696200408cc2'
 if hashlib.sha256(Path('build/flipper-z-f7-sdk-mntm-012.zip').read_bytes()).hexdigest()!=expected:raise SystemExit('SDK checksum mismatch')
 PY
-UFBT_HOME="$PWD/.ufbt" .venv/bin/ufbt update --local "$sdk_zip"
+UFBT_HOME="$PWD/.ufbt" .venv/bin/ufbt update --hw-target f7 --local "$sdk_zip"
