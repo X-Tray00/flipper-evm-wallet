@@ -6,6 +6,19 @@ import { FILTER } from './hid';
 import './wallet.css';
 import { DEFAULT_LOCALE, getLocale, languages } from '../../shared/locales';
 import { translations, type RequestTitle } from '../../shared/messages';
+function PixelArrow() {
+  return (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      className="pixel-arrow"
+      viewBox="0 0 16 16"
+      shapeRendering="crispEdges"
+    >
+      <path d="M2 6h8V3h2v2h2v2h2v2h-2v2h-2v2h-2v-3H2z" fill="currentColor" />
+    </svg>
+  );
+}
 async function call(action: string, args: object = {}) {
   if (!globalThis.chrome?.runtime?.id)
     throw new Error('Open this page from the installed extension');
@@ -186,6 +199,7 @@ function App() {
             }
           >
             {t.connect}
+            <PixelArrow />
           </button>
         </section>
         <div className="selectors">
@@ -273,7 +287,10 @@ function App() {
                 >
                   {t.refresh}
                 </button>
-                <button onClick={() => setTab('send')}>{t.send} →</button>
+                <button onClick={() => setTab('send')}>
+                  {t.send}
+                  <PixelArrow />
+                </button>
               </div>
             </section>
             <section className="card">
@@ -342,7 +359,8 @@ function App() {
                 )}
               {operation !== 'ETH' && <p className="muted">{t.raw}</p>}
               <button type="submit" disabled={!addr || busy || !!snapshot.pending}>
-                {t.review} →
+                {t.review}
+                <PixelArrow />
               </button>
             </form>
           </section>
@@ -420,7 +438,8 @@ function App() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {h.hash} ↗
+                  {h.hash}
+                  <PixelArrow />
                 </a>
                 <small>{h.origin}</small>
                 <button

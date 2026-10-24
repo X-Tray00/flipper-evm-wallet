@@ -3,6 +3,19 @@
 body {
   margin: 0;
 }
+.pixel-arrow {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+  vertical-align: -1px;
+  flex: none;
+}
+a .pixel-arrow {
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+}
 button.secondary {
   background: #211b15;
   border-color: #806043;
