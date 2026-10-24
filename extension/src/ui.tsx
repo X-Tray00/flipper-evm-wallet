@@ -185,7 +185,7 @@ function App() {
               })
             }
           >
-            {t.connect} ↗
+            {t.connect}
           </button>
         </section>
         <div className="selectors">
